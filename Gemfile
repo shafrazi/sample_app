@@ -9,11 +9,13 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7'
 gem "bootstrap-sass", "3.3.6"
+gem "bcrypt", "3.1.11"
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 
 
 gem "rails-controller-testing"
+gem 'minitest', '~>5.10.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
