@@ -3,10 +3,17 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # retrieve the user
     user = User.find_by(email: params[:session][:email].downcase)
+    # check if user is valid and password matches
     if user && user.authenticate(params[:session][:password])
       # Log in the user and redirect to the user's show page
       log_in(user)
+      if params[:session][:remember_me] == "1"
+        remember(user)
+      else
+        forget(user)
+      end
       redirect_to user
     else
       # create an error message
@@ -17,7 +24,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 end
